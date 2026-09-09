@@ -1,0 +1,462 @@
+/* =========================================================
+   RESPONSIVIDADE GLOBAL CSR
+
+   Em telas largas, nenhuma proporção original é alterada.
+   As regras abaixo só entram conforme a janela perde espaço.
+   ========================================================= */
+
+/* Notebook / desktop menor */
+@media (max-width: 1499px) {
+  body,
+  main,
+  section,
+  header,
+  footer {
+    min-width: 0;
+  }
+
+  .section-pad,
+  .site-header,
+  .hero {
+    padding-left: clamp(28px, 3.5vw, 56px);
+    padding-right: clamp(28px, 3.5vw, 56px);
+  }
+
+  .hero h1 {
+    font-size: clamp(6rem, 12vw, 11rem);
+  }
+
+  .compact-showcase,
+  .pricing .package-list {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pricing .package-list > article,
+  .compact-showcase .project,
+  .services .service-list article {
+    min-width: 0;
+  }
+
+  .portfolio-heading h2,
+  .pricing-intro h2 {
+    font-size: clamp(3rem, 5vw, 5rem);
+  }
+
+  .pricing .package-title h3 {
+    font-size: clamp(1.3rem, 1.55vw, 1.8rem);
+  }
+
+  .pricing .package-list article > p {
+    font-size: clamp(.92rem, .95vw, 1.08rem);
+    line-height: 1.5;
+  }
+
+  .pricing .package-list ul {
+    font-size: clamp(.82rem, .76vw, .98rem);
+    line-height: 1.75;
+  }
+
+  .pricing .package-list strong {
+    font-size: clamp(1.65rem, 1.75vw, 2.15rem);
+  }
+
+  .pricing .package-list article > a {
+    font-size: clamp(.7rem, .62vw, .84rem);
+  }
+
+  /* Sobrescreve as regras desktop antigas dos serviços com a mesma
+     especificidade, impedindo que os cards fiquem miniaturizados. */
+  .services .service-list {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: clamp(16px, 1.8vw, 26px) !important;
+  }
+
+  .services .service-list article {
+    display: flex !important;
+    min-height: clamp(260px, 24vw, 360px) !important;
+    padding: clamp(24px, 2.2vw, 34px) !important;
+  }
+
+  .services .service-list h2 {
+    max-width: 12ch !important;
+    font-size: clamp(2rem, 2.6vw, 3.1rem) !important;
+    line-height: .98 !important;
+  }
+
+  .services .service-list p {
+    max-width: 34ch !important;
+    font-size: clamp(.92rem, .9vw, 1.05rem) !important;
+    line-height: 1.55 !important;
+  }
+}
+
+/* Em uma janela mais estreita, três cards deixam de ter largura
+   confortável e os serviços passam para duas colunas. */
+@media (max-width: 1300px) {
+  .services .service-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .services .service-list article {
+    min-height: 300px !important;
+  }
+
+  .services .service-list h2 {
+    max-width: 15ch !important;
+    font-size: clamp(2.15rem, 3.2vw, 3rem) !important;
+  }
+
+  .services .service-list p {
+    font-size: 1rem !important;
+  }
+}
+
+/* Notebook compacto / tablet horizontal */
+@media (max-width: 1180px) {
+  .section-pad {
+    padding-top: clamp(58px, 7vw, 78px);
+    padding-bottom: clamp(58px, 7vw, 78px);
+  }
+
+  .section-label {
+    margin-bottom: clamp(36px, 5vw, 55px);
+  }
+
+  .hero {
+    min-height: 82svh;
+  }
+
+  .hero h1 {
+    font-size: clamp(5.2rem, 12vw, 8.8rem);
+  }
+
+  .hero-bottom p {
+    font-size: clamp(1rem, 1.6vw, 1.35rem);
+  }
+
+  .compact-showcase .projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(14px, 2vw, 22px);
+  }
+
+  .compact-showcase .project {
+    width: 100%;
+    margin: 0;
+  }
+
+  .pricing-intro {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact h2 {
+    font-size: clamp(5rem, 9vw, 8rem);
+  }
+
+  footer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  footer small {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Antes de os dois cards ficarem estreitos demais, entra uma coluna. */
+@media (max-width: 900px) {
+  .section-pad,
+  .site-header,
+  .hero {
+    padding-left: clamp(22px, 4vw, 32px);
+    padding-right: clamp(22px, 4vw, 32px);
+  }
+
+  .hero {
+    min-height: 78svh;
+    padding-top: 112px;
+  }
+
+  .hero h1 {
+    font-size: clamp(4.4rem, 14vw, 7rem);
+    line-height: .8;
+  }
+
+  .hero h1 em {
+    padding-left: 7vw;
+  }
+
+  .hero-bottom {
+    gap: 24px;
+  }
+
+  .circle-link {
+    flex: 0 0 auto;
+    width: 60px;
+    height: 60px;
+  }
+
+  .portfolio-heading {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .portfolio-filters {
+    flex-wrap: wrap;
+  }
+
+  .services .service-list {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 18px !important;
+  }
+
+  .services .service-list article {
+    min-height: 260px !important;
+    padding: 26px !important;
+  }
+
+  .services .service-list h2 {
+    max-width: none !important;
+    font-size: clamp(2rem, 6vw, 2.8rem) !important;
+  }
+
+  .services .service-list p {
+    max-width: 58ch !important;
+    font-size: 1rem !important;
+  }
+
+  .pricing-intro h2 {
+    font-size: clamp(2.8rem, 8vw, 4.8rem);
+  }
+
+  .pricing-intro > p {
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .manifesto-foot {
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .contact {
+    min-height: 70svh;
+  }
+
+  .contact h2 {
+    font-size: clamp(4.5rem, 12vw, 7rem);
+  }
+}
+
+/* Mobile grande */
+@media (max-width: 760px) {
+  .section-pad {
+    padding: 58px 20px;
+  }
+
+  .section-label {
+    margin-bottom: 36px;
+  }
+
+  .hero {
+    min-height: 100svh;
+    padding: 112px 20px 26px;
+  }
+
+  .hero h1 {
+    margin-top: 3vh;
+    font-size: clamp(4rem, 19vw, 6.5rem);
+    line-height: .78;
+  }
+
+  .hero h1 em {
+    padding-left: 4vw;
+  }
+
+  .hero-bottom p {
+    font-size: 1rem;
+  }
+
+  .wine-orbit {
+    right: 12vw;
+    bottom: 20vh;
+  }
+
+  .portfolio-heading h2,
+  .pricing-intro h2 {
+    font-size: clamp(2.5rem, 11vw, 4rem);
+  }
+
+  .portfolio-heading p,
+  .pricing-intro > p {
+    font-size: .95rem;
+    line-height: 1.55;
+  }
+
+  .portfolio-filters {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .portfolio-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .portfolio-filters button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .compact-showcase .projects {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .compact-showcase .project {
+    width: 100%;
+  }
+
+  .compact-showcase .image-wrap {
+    aspect-ratio: 4 / 4.6;
+  }
+
+  .services .service-list article {
+    min-height: 235px !important;
+    padding: 22px !important;
+  }
+
+  .services .service-list h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+  }
+
+  .services .service-list p {
+    font-size: .95rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .pricing-intro {
+    margin-bottom: 32px;
+  }
+
+  .pricing .package-list > article {
+    padding: clamp(20px, 5vw, 26px);
+  }
+
+  .pricing .package-list article > p {
+    font-size: 1rem;
+  }
+
+  .pricing .package-list ul {
+    font-size: .94rem;
+  }
+
+  .pricing .package-list strong {
+    font-size: clamp(1.8rem, 7vw, 2.25rem);
+  }
+
+  .pricing .package-list article > a {
+    min-height: 44px;
+    font-size: .76rem;
+  }
+
+  .contact {
+    min-height: 68svh;
+  }
+
+  .contact h2 {
+    margin: 34px 0;
+    font-size: clamp(4rem, 15vw, 6.5rem);
+  }
+
+  .contact > a {
+    gap: 18px;
+    font-size: .72rem;
+  }
+
+  footer {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 42px 20px;
+    gap: 20px;
+  }
+
+  footer small {
+    grid-column: 1;
+  }
+
+  .lightbox {
+    padding: 18px;
+  }
+
+  .lightbox-stage {
+    grid-template-columns: 1fr;
+    position: relative;
+  }
+
+  .lightbox-stage img {
+    max-height: 68vh;
+  }
+}
+
+/* Celulares pequenos */
+@media (max-width: 520px) {
+  .section-pad {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.55rem, 18vw, 5.4rem);
+  }
+
+  .hero-bottom {
+    align-items: flex-end;
+  }
+
+  .hero-bottom p {
+    max-width: 230px;
+  }
+
+  .circle-link {
+    width: 54px;
+    height: 54px;
+  }
+
+  .portfolio-heading h2,
+  .pricing-intro h2 {
+    font-size: clamp(2.25rem, 10.5vw, 3.4rem);
+  }
+
+  .services .service-list h2 {
+    font-size: clamp(1.7rem, 8vw, 2.25rem) !important;
+  }
+
+  .manifesto-foot {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .manifesto-foot span {
+    white-space: normal;
+  }
+
+  .contact h2 {
+    font-size: clamp(3.5rem, 14vw, 5rem);
+  }
+}

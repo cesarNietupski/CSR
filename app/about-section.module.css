@@ -1,0 +1,183 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.48fr);
+  grid-template-areas:
+    "identity photo"
+    "copy photo";
+  column-gap: clamp(48px, 7vw, 120px);
+  row-gap: clamp(36px, 5vw, 72px);
+  align-items: start;
+}
+
+/* O aside participa do grid sem criar uma caixa intermediária.
+   Assim nome e foto podem ocupar áreas diferentes sem position:absolute. */
+.profile {
+  display: contents;
+}
+
+.identity {
+  grid-area: identity;
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  align-self: end;
+}
+
+.name {
+  margin: 0;
+  font: 1000 clamp(4rem, 6vw, 9rem) / 0.92 Georgia, serif;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+}
+
+.role {
+  margin: 8px 0 0;
+  font-size: clamp(.85rem, 1vw, 1.2rem);
+  line-height: 1.35;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #666;
+  white-space: nowrap;
+}
+
+.copy {
+  grid-area: copy;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  text-align: left;
+  font-size: clamp(3.4rem, 5.2vw, 6.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+}
+
+.copy em {
+  color: var(--wine);
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.photoFrame {
+  grid-area: photo;
+  min-width: 0;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #d9d6cf;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(100%);
+  transition: transform 0.7s ease, filter 0.5s ease;
+}
+
+.photoFrame:hover .photo {
+  transform: scale(1.02);
+  filter: grayscale(10%);
+}
+
+/* Notebook / janela reduzida: mantém duas colunas, mas reduz a tipografia. */
+@media (max-width: 1400px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, .62fr);
+    column-gap: clamp(30px, 4vw, 58px);
+    row-gap: clamp(28px, 4vw, 48px);
+  }
+
+  .name {
+    font-size: clamp(3.2rem, 5vw, 6rem);
+    white-space: normal;
+  }
+
+  .role {
+    font-size: clamp(.78rem, .9vw, 1rem);
+    white-space: normal;
+  }
+
+  .copy {
+    font-size: clamp(2.7rem, 4.7vw, 5rem);
+  }
+}
+
+/* Em tablet / janelas estreitas, tudo entra em uma única coluna. */
+@media (max-width: 1050px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "identity"
+      "copy"
+      "photo";
+    gap: clamp(28px, 5vw, 48px);
+  }
+
+  .identity,
+  .copy,
+  .photoFrame {
+    width: 100%;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .identity {
+    align-self: start;
+  }
+
+  .name {
+    font-size: clamp(3rem, 7vw, 5rem);
+  }
+
+  .role {
+    font-size: clamp(.82rem, 1.5vw, 1rem);
+  }
+
+  .copy {
+    font-size: clamp(2.7rem, 6.8vw, 4.8rem);
+  }
+
+  .photoFrame {
+    max-width: 620px;
+  }
+}
+
+@media (max-width: 760px) {
+  .grid {
+    gap: 30px;
+  }
+
+  .name {
+    font-size: clamp(2.6rem, 11vw, 4rem);
+  }
+
+  .role {
+    margin-top: 10px;
+    font-size: clamp(.76rem, 3vw, .95rem);
+    letter-spacing: 0.12em;
+  }
+
+  .copy {
+    font-size: clamp(2.25rem, 9.5vw, 3.8rem);
+    line-height: .98;
+  }
+
+  .photoFrame {
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 480px) {
+  .name {
+    font-size: clamp(2.2rem, 10vw, 3.2rem);
+  }
+
+  .copy {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+}
