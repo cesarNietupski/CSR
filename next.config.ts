@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: isGitHubPages ? "/meusite" : "",
+  basePath: isGitHubPages ? "/CSR" : "",
 };
 
 export default nextConfig;
